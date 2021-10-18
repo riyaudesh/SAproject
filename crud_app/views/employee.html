@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>EMPLOYEE ATTENDANCE MANAGEMENT</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="../assets/css/style.css">
+    </head>
+<body>
+    <!--header-->
+    <header id="header">
+        <nav>
+        <div class="container">
+            <div class="text-center">
+                <a href="/" class="nav-brand text-dark">ATTENDANCE MANAGEMENT SYSTEM</a>
+            </div>
+        </div>
+        </nav>
+    </header>
+<!--main site-->
+<main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+            <a href="/add-user" class="border-shadow">
+                <span class="text-gradient">WELCOME,</span>
+            </a>
+        </div>
+
+        <!--form handling-->
+        <form action=add_user.html method="POST" id="employees">
+            <div>
+                <label for="username">username</label>
+                <input type="username"  name="username" placeholder="username">
+                <span></span>
+                </div>
+                <div>
+                <label for="password">Password</label>
+                <input type="password"  name="password" placeholder="******">
+                <span></span>
+                </div>
+            <button id="log-in">Log-in</button>
+                 </form>
+    </div>
+</main>
+ <!--/main site-->   
+</body>
+</html>
+<script>
+    window.onload = ()=>{
+        this.sessionStorage.setItem("username", "employee");
+        this.sessionStorage.setItem("password", "123456");
+    }
+    var input=document.getElementsByTagName('input');
+    var login=document.getElementById('log-in');
+    var form=document.querySelector('form');
+    form.onsubmit = () => {return false}
+
+    login.onclick = () => {
+        if((input[0].value != "") && (input[1].value != ""))
+        {
+            if((input[0].value == sessionStorage.getItem("username")) && (input[1].value == sessionStorage.getItem("password")))
+            {
+                form.onsubmit = () =>{return 1}
+            }   
+        else
+        {
+            if((input[0].value != sessionStorage.getItem("username")))
+            {
+                input[0].nextElementSibling.textContent = "username NOT match";
+                setTimeout(()=>{
+                    input[0].nextElementSibling.textContent = "";
+                                            }, 2000);
+                                        }
+            if((input[1].value != sessionStorage.getItem("password")))
+            {
+                input[1].nextElementSibling.textContent = "password NOT match";
+                setTimeout(()=>{
+                    input[1].nextElementSibling.textContent = "";
+                                            }, 2000);
+                                        }
+                                    }
+                                }
+        else
+        {                        
+            if(input[0].value == "")
+            {
+                input[0].nextElementSibling.textContent = "username is empty";
+                setTimeout(()=>{
+                    input[0].nextElementSibling.textContent = "";
+                                            }, 2000);
+          } 
+        if(input[1].value == "")
+            {
+                input[1].nextElementSibling.textContent = "password is empty";
+                setTimeout(()=>{
+                    input[1].nextElementSibling.textContent = "";
+                                            }, 2000);
+            }
+        }
+    }
+        </script>
